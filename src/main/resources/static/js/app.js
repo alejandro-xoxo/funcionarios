@@ -1,5 +1,8 @@
 // URL base de la API REST del directorio.
-const API_URL = 'http://localhost:8080/api/v1/funcionarios';
+// Si Spring sirve la página, usa ese mismo servidor (http://localhost:8080 por defecto);
+// si se abre el archivo directamente, apunta a http://localhost:8080.
+const SERVIDOR = location.protocol.startsWith('http') ? location.origin : 'http://localhost:8080';
+const API_URL = `${SERVIDOR}/api/v1/funcionarios`;
 
 // Referencias a elementos de la página
 const formulario = document.getElementById('formulario');

@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: funcionarios-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: directorio_funcionarios
+      MYSQL_USER: funcionarios
+      MYSQL_PASSWORD: funcionarios123
+    ports:
+      # Se expone en 3307 para no chocar con otro MySQL que ya use el 3306.
+      - "3307:3306"
+    volumes:
+      # Volumen con nombre: los datos sobreviven a reinicios del contenedor y de la app.
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
